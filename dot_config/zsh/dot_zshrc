@@ -1,0 +1,47 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export PATH=${PATH}:$HOME/bin:$HOME/.local/bin
+
+if ! type sheldon > /dev/null; then
+  curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
+    | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+fi
+
+eval "$(sheldon source)"
+
+#manual installation of powerlevel10k
+if [ -d "$XDG_CONFIG_HOME/powerlevel10k" ]; then
+  source "$XDG_CONFIG_HOME/powerlevel10k/powerlevel10k.zsh-theme"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
+[[ ! -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] || source "${ZDOTDIR:-$HOME}/.p10k.zsh"
+
+# NVM
+if [ -s "${XDG_CONFIG_HOME/nvm:-$HOME/.config}/nvm.sh" ]; then
+  export NVM_DIR="${XDG_CONFIG_HOME/nvm:-$HOME/.config}/nvm"
+  source $NVM_DIR/nvm.sh
+fi
+
+export ZSH_CUSTOM_INCLUDES="$ZDOTDIR/includes"
+
+if [[ -d "$ZSH_CUSTOM_INCLUDES" ]]; then
+   for file in "$ZSH_CUSTOM_INCLUDES"/.*.zsh; do
+    source "$file"
+  done
+fi
+
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+
+# set vs code as default terminal editor
+export EDITOR="code -w"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="${XDG_CONFIG_HOME:-$HOME}/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
