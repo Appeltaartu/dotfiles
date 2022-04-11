@@ -8,7 +8,7 @@ alias gall="git add ."
 alias gp="git push"
 
 # Gradle build
-alias gw="./gradlew --no-daemon --parallel"
+alias gw="./gradlew --parallel"
 
 # alias gw="./gradlew --parallel"
 alias gwcb="gw clean build"
