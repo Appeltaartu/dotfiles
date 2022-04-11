@@ -1,6 +1,3 @@
-# Do not show PWD after change of path 'via' CDPATH
-alias cd='>/dev/null cd'
-
 # show cpu thermal
 alias cputemp="pmset -g thermlog"
 

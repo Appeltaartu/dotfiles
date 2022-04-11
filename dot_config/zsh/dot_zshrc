@@ -6,13 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH=${PATH}:$HOME/bin:$HOME/.local/bin
+export CDPATH=".:$HOME"
+# Do not show PWD after change of path 'via' CDPATH
+alias cd='>/dev/null cd'
 
-if ! type sheldon > /dev/null; then
-  curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
-    | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+if type sheldon > /dev/null; then
+  eval "$(sheldon source)"  
 fi
-
-eval "$(sheldon source)"
 
 #manual installation of powerlevel10k
 if [ -d "$XDG_CONFIG_HOME/powerlevel10k" ]; then
