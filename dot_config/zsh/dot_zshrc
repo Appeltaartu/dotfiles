@@ -12,6 +12,8 @@ alias cd='>/dev/null cd'
 
 if type sheldon > /dev/null; then
   eval "$(sheldon source)"  
+
+  autoload -U compinit && compinit
 fi
 
 #manual installation of powerlevel10k

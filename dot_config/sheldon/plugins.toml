@@ -14,6 +14,10 @@ shell = "zsh"
 
 [templates]
 defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+source = { value = 'source "{{ file }}"', each = true }
+PATH = 'export PATH="{{ dir }}:$PATH"'
+path = 'path=( "{{ dir }}" $path )'
+fpath = 'fpath=( "{{ dir }}" $fpath )'
 
 [plugins]
 
@@ -25,11 +29,10 @@ github = "romkatv/zsh-defer"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
-apply = ["defer"]
+apply = ["fpath"]
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
-apply = ["defer"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
