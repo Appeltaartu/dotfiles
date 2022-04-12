@@ -25,8 +25,8 @@ fi
 [[ ! -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] || source "${ZDOTDIR:-$HOME}/.p10k.zsh"
 
 # NVM
-if [ -s "${XDG_CONFIG_HOME/nvm:-$HOME/.config}/nvm.sh" ]; then
-  export NVM_DIR="${XDG_CONFIG_HOME/nvm:-$HOME/.config}/nvm"
+if [ -d "$XDG_CONFIG_HOME/nvm" ]; then
+  export NVM_DIR="$XDG_CONFIG_HOME/nvm"
   source $NVM_DIR/nvm.sh
 fi
 
