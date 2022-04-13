@@ -37,3 +37,7 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
+
+[plugins.zsh-bd]
+github = "Tarrasch/zsh-bd"
+use = ["bd.zsh"]
