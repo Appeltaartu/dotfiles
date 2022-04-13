@@ -27,6 +27,9 @@ github = "romkatv/powerlevel10k"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.zsh-bd]
+github = "Tarrasch/zsh-bd"
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["fpath"]
@@ -37,7 +40,3 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
-
-[plugins.zsh-bd]
-github = "Tarrasch/zsh-bd"
-use = ["bd.zsh"]
