@@ -27,10 +27,12 @@ alias vr="vagrant reload"
 alias vssh="vagrant ssh"
 
 
-if (( !$+commands[foobar] )); then
+if (( $+commands[foobar] )); then
     # ls
     alias ls="exa --icons --group-directories-first"
     alias ll="exa --icons --group-directories-first -al"
+else
+    alias ll="ls -al"
 fi
 
 
