@@ -26,8 +26,13 @@ alias vh="vagrant halt"
 alias vr="vagrant reload"
 alias vssh="vagrant ssh"
 
-# ls
-alias ls="exa --icons --group-directories-first"
-alias ll="exa --icons --group-directories-first -al"
+
+if (( !$+commands[foobar] )); then
+    # ls
+    alias ls="exa --icons --group-directories-first"
+    alias ll="exa --icons --group-directories-first -al"
+fi
+
+
 alias g="goto"
 alias grep='grep --color'
