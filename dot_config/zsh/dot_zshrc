@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# autoload -U compinit -d $XDG_CACHE_HOME/.zcompdump && compinit -d $XDG_CACHE_HOME/.zcompdump
 autoload -U compinit && compinit
 
 setopt complete_aliases
@@ -27,8 +28,26 @@ export CDPATH=".:$HOME"
 # Do not show PWD after change of path 'via' CDPATH
 alias cd='>/dev/null cd'
 
-if type sheldon > /dev/null; then
-  eval "$(sheldon source)"  
+# if type sheldon > /dev/null; then
+#   eval "$(sheldon source)"  
+# fi
+
+if type thefuck > /dev/null; then
+  eval $(thefuck --alias)
+fi
+
+# Use antigen to install plugins
+export ADOTDIR="$XDG_CONFIG_HOME/antigen"
+
+if [[ ! -f ${ADOTDIR:-$HOME/.antigen}/antigen.zsh ]]; then
+  curl -L git.io/antigen > $ADOTDIR/antigen.zsh
+fi
+  
+if [[ -f ${ADOTDIR:-$HOME/.antigen}/antigen.zsh ]]; then
+  typeset -a ANTIGEN_CHECK_FILES=($ADOTDIR/antigenrc $ZDOTDIR/.zshrc)
+  # export ANTIGEN_CACHE=false
+  source $ADOTDIR/antigen.zsh
+  antigen init $ADOTDIR/antigenrc
 fi
 
 #manual installation of powerlevel10k
@@ -59,4 +78,3 @@ export EDITOR="code -w"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${XDG_CONFIG_HOME:-$HOME}/sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
