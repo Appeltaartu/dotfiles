@@ -3,7 +3,7 @@ alias cputemp="pmset -g thermlog"
 
 # Git 
 alias gs="git status"
-alias gc="git commit"
+alias gc="git commit -v"
 alias gall="git add ."
 alias gp="git push"
 
