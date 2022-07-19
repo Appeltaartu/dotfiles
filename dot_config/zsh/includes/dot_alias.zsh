@@ -6,6 +6,8 @@ alias gs="git status"
 alias gc="git commit -v"
 alias gall="git add ."
 alias gp="git push"
+alias gco="git checkout"
+alias gcb="git checkout -b"
 
 # Gradle build
 alias gw="./gradlew --parallel"
@@ -17,7 +19,7 @@ alias gwcheck="gw checkstyleMain pmdMain spotbugsMain --continue"
 
 # alias gwcheck="gw check --continue"
 alias gwcc="gw clean && gwcheck --continue"
-alias gwcj="gw clean compileJava"
+alias gwc="gw clean compileJava"
 alias gwp="gw clean build publishToMavenLocal"
 
 # Vagrant
