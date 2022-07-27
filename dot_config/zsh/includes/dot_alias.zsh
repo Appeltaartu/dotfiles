@@ -20,7 +20,7 @@ alias gwcheck="gw checkstyleMain pmdMain spotbugsMain --continue"
 # alias gwcheck="gw check --continue"
 alias gwcc="gw clean && gwcheck --continue"
 alias gwc="gw clean compileJava"
-alias gwp="gw clean build publishToMavenLocal"
+alias gwp="gw clean publishToMavenLocal"
 
 # Vagrant
 alias vup="vagrant up"
